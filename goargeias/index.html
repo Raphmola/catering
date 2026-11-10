@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Georgias Catering Services Ltd | Oil & Gas Catering & Facility Management</title>
+    <style>
+        :root {
+            --brand-purple: #4A154B;
+            --brand-grey: #6B7280;
+            --brand-red: #D32F2F;
+            --brand-black: #111111;
+            --dark-neutral: #222222;
+            --light-bg: #F9FAFB;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--dark-neutral);
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+        }
+
+        /* Top Bar for Contact / Info */
+        .top-bar {
+            background-color: var(--brand-black);
+            color: var(--white);
+            padding: 8px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .top-bar span {
+            margin-right: 20px;
+        }
+
+        /* Transparent Header Overlaying the Video Background */
+        header {
+            background-color: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 37px;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .company-title h1 {
+            font-size: 17px;
+            margin: 0;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        }
+
+        .company-title p {
+            font-size: 11px;
+            margin: 2px 0 0 0;
+            color: #dddddd;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+        }
+
+        nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 14px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--brand-red);
+        }
+
+        /* Hero Video Background Section */
+        .hero-video-container {
+            position: relative;
+            height: 600px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 40px 20px 0 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        }
+
+        .btn {
+            background-color: var(--brand-red);
+            color: var(--white);
+            padding: 14px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #B71C1C;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 20px;
+        }
+
+        h2.section-heading {
+            text-align: center;
+            font-size: 30px;
+            color: var(--brand-purple);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        p.section-sub {
+            text-align: center;
+            color: var(--brand-grey);
+            margin-bottom: 50px;
+            font-size: 16px;
+        }
+
+        /* Feature Cards Grid with Top Images */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--brand-purple);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .service-card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .service-card h3 {
+            color: var(--brand-purple);
+            margin-top: 0;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* Body Section with Full-Width Background Image & Dark Overlay */
+        .body-bg-section {
+            position: relative;
+            background-image: url('truck_4.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 90px 20px;
+            color: var(--white);
+        }
+
+        .body-bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(17, 21, 28, 0.85);
+            z-index: 1;
+        }
+
+        .body-bg-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Gallery Carousel Styles */
+        .carousel-container {
+            position: relative;
+            max-width: 950px;
+            margin: 0 auto 50px auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            background: #000;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            width: 100%;
+            padding: 18px 20px;
+            box-sizing: border-box;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: var(--brand-red);
+        }
+
+        .carousel-btn.prev { left: 15px; }
+        .carousel-btn.next { right: 15px; }
+
+        .carousel-dots {
+            text-align: center;
+            padding: 15px;
+            background: var(--light-bg);
+        }
+
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: var(--brand-purple);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .card-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 35px;
+            border-left: 6px solid var(--brand-red);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .card-box h3 {
+            margin-top: 0;
+            color: var(--white);
+            font-size: 22px;
+        }
+
+        footer {
+            background-color: var(--brand-black);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div>
+            <span>📍 Nigeria Operations</span>
+            <span>✉ info@georgiascatering.com</span>
+        </div>
+        <div>
+            <span>Support: 24/7 Offshore Emergency Services</span>
+        </div>
+    </div>
+
+    <!-- Transparent Header Overlaid on Video Background -->
+    <header>
+        <div class="logo-area">
+            <img src="Logo.png" alt="Georgias Logo" class="logo-img">
+            <div class="company-title">
+                <h1>Georgias Catering</h1>
+                <p>Services Ltd</p>
+            </div>
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Background Video -->
+    <section class="hero-video-container" id="home">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="food.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>Delivering Quality Catering, Hospitality & Facility Management Solutions</h2>
+            <p>Leading with efficiency, safety, and operational excellence in the oil, gas, and marine industries across Nigeria.</p>
+            <a href="#contact" class="btn">Partner With Us</a>
+        </div>
+    </section>
+
+    <!-- Core Services Overview Cards with Images -->
+    <div class="container" id="services">
+        <h2 class="section-heading">Our Core Expertise</h2>
+        <p class="section-sub">Industrial-grade catering and facility management structured for uncompromising standards.</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="crew.png" alt="Oil & Gas Catering">
+                <div class="service-card-content">
+                    <div>
+                        <h3>Oil & Gas Catering</h3>
+                        <p>Specialized marine and offshore catering services providing rich Nigerian and continental menus with generous portions for heavy-duty workforces.</p>
+                    </div>
+                    <a href="#contact" style="color: var(--brand-purple); font-weight: bold; text-decoration: none;">Learn More &rarr;</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="containe.png" alt="Facility Management">
+                <div class="service-card-content">
+                    <div>
+                        <h3>Facility Management</h3>
+                        <p>Comprehensive accommodation maintenance, rigorous janitorial and deep cleaning, professional laundry, and complete waste management.</p>
+                    </div>
+                    <a href="#contact" style="color: var(--brand-purple); font-weight: bold; text-decoration: none;">Learn More &rarr;</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="loading.jpg" alt="Emergency Support">
+                <div class="service-card-content">
+                    <div>
+                        <h3>Emergency Support</h3>
+                        <p>24-hour rapid response support teams ready around the clock to handle urgent client requirements and emergency catering logistics.</p>
+                    </div>
+                    <a href="#contact" style="color: var(--brand-purple); font-weight: bold; text-decoration: none;">Learn More &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section with `truck_4.jpg` (saved as truck_4.jpg or truck_5.jpg) as Background -->
+    <section class="body-bg-section" id="about" style="background-image: url('truck.jpg');">
+        <div class="body-bg-overlay"></div>
+        <div class="body-bg-content">
+            <h2 class="section-heading" style="color: #ffffff;">About Georgias Catering Services Ltd</h2>
+            <p class="section-sub" style="color: #dddddd;">A wholly Nigerian-owned service provider built on reliability, hygiene, and industrial scale.</p>
+            
+            <div class="grid-2">
+                <div>
+                    <p style="font-size: 16px; line-height: 1.7;">GEORGIAS CATERING SERVICES LTD is a fully Nigerian-owned company that leads with efficiency in the field of hospitality in the oil and gas industry. We understand the rigorous demands of offshore installations, marine vessels, drilling rigs, and industrial corporate environments.</p>
+                    <p style="font-size: 16px; line-height: 1.7;">Our commitment goes beyond conventional food supply. We integrate world-class catering standards with comprehensive facility management, accommodation upkeep, and round-the-clock emergency support to ensure your workforce remains healthy, comfortable, and productive.</p>
+                </div>
+                <div class="card-box">
+                    <h3>Our Core Standards</h3>
+                    <ul style="padding-left: 20px; line-height: 1.6;">
+                        <li><strong>Uncompromising Food Quality:</strong> Rich local and continental menus prepared under strict hygiene protocols.</li>
+                        <li><strong>Appreciable Portions:</strong> Generous, well-balanced meal portions tailored for high-energy workforce requirements.</li>
+                        <li><strong>Logistics Readiness:</strong> Experienced in handling marine logistics, containerized provisions, and offshore transfers.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operational Gallery Carousel Section -->
+    <div class="container" id="gallery">
+        <h2 class="section-heading">Operational Gallery & Fleet</h2>
+        <p class="section-sub">A visual showcase of our offshore provisioning, marine logistics, and service operations.</p>
+
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide">
+                    <img src="containe.png" alt="Modular Camp Accommodations">
+                    <div class="carousel-caption">Prefabricated modular accommodation and remote site camp infrastructure.</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="crew.png" alt="Catering & Offshore Crew">
+                    <div class="carousel-caption">Our professional catering crew and offshore operations personnel.</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="loading.jpg" alt="Offshore Container Crane Lift">
+                    <div class="carousel-caption">Offshore container provisioning and marine crane operations.</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="truck.jpg" alt="Branded Distribution Fleet">
+                    <div class="carousel-caption">Branded distribution trucks and logistics vans ready for dispatch.</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="lift.jpg" alt="Forklift Container Handling">
+                    <div class="carousel-caption">Heavy-duty forklift and yard container handling.</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="shipment.jpg" alt="Vessel Deck & Rigging Operations">
+                    <div class="carousel-caption">Rigorous offshore vessel deck operations and container handling.</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="ship.jpg" alt="Marine Deck Logistics">
+                    <div class="carousel-caption">Marine deck logistics and supply vessel provisioning operations.</div>
+                </div>
+            </div>
+
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+
+        <div class="carousel-dots" id="carouselDots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+        </div>
+    </div>
+
+    <!-- Contact CTA Section -->
+    <div style="background-color: var(--brand-purple); color: white; padding: 70px 20px; text-align: center;" id="contact">
+        <h2 style="color: white; font-size: 30px; margin-bottom: 15px; text-transform: uppercase;">Ready to Elevate Your Project's Catering & Facility Standards?</h2>
+        <p style="font-size: 16px; max-width: 650px; margin: 0 auto 35px auto; color: #ddd;">Contact our operations team today for corporate catering proposals, offshore contracts, or facility management inquiries.</p>
+        <a href="https://web.facebook.com/GeorgiasCateringServices/" target="_blank" class="btn" style="background-color: var(--brand-red);">Visit our Facebook Page</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Georgias Catering Services Ltd. All Rights Reserved.</p>
+        <p>Wholly Nigerian-Owned Oil & Gas Support Services.</p>
+    </footer>
+
+    <script>
+        // Gallery Carousel Script
+        let slideIndex = 0;
+        const track = document.getElementById('carouselTrack');
+        const slides = document.getElementsByClassName('carousel-slide');
+        const dots = document.getElementsByClassName('dot');
+
+        function showSlide(index) {
+            if (index >= slides.length) { slideIndex = 0; }
+            if (index < 0) { slideIndex = slides.length - 1; }
+            
+            track.style.transform = `translateX(-${slideIndex * 100}%)`;
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            dots[slideIndex].className += " active";
+        }
+
+        function moveSlide(n) {
+            slideIndex += n;
+            showSlide(slideIndex);
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlide(slideIndex);
+        }
+
+        // Auto-advance gallery carousel every 6 seconds
+        setInterval(() => {
+            slideIndex++;
+            showSlide(slideIndex);
+        }, 6000);
+    </script>
+
+</body>
+</html>
