@@ -41,7 +41,7 @@
             margin-right: 20px;
         }
 
-        /* Transparent Header Overlaying the Video Background */
+        /* Transparent Header Overlaying the Hero Background */
         header {
             background-color: transparent;
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
@@ -103,7 +103,7 @@
             color: var(--brand-red);
         }
 
-        /* Hero Video Background Section */
+        /* Hero Background Picture Carousel Section */
         .hero-video-container {
             position: relative;
             height: 600px;
@@ -116,17 +116,29 @@
             color: var(--white);
         }
 
-        .hero-video {
+        .hero-bg-slider {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 1;
+        }
+
+        .hero-bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-bg-slide.active {
+            opacity: 1;
         }
 
         .hero-overlay {
@@ -247,7 +259,7 @@
         /* Body Section with Full-Width Background Image & Dark Overlay */
         .body-bg-section {
             position: relative;
-            background-image: url('truck_4.jpg');
+            background-image: url('truck.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -406,7 +418,7 @@
         </div>
     </div>
 
-    <!-- Transparent Header Overlaid on Video Background -->
+    <!-- Transparent Header Overlaid on Hero Background -->
     <header>
         <div class="logo-area">
             <img src="Logo.png" alt="Georgias Logo" class="logo-img">
@@ -424,12 +436,14 @@
         </nav>
     </header>
 
-    <!-- Hero Section with Background Video -->
+    <!-- Hero Section with Background Picture Carousel (truck.jpg first) -->
     <section class="hero-video-container" id="home">
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="food.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-        </video>
+        <div class="hero-bg-slider">
+            <div class="hero-bg-slide active" style="background-image: url('truck.jpg');"></div>
+            <div class="hero-bg-slide" style="background-image: url('chops.png');"></div>
+            <div class="hero-bg-slide" style="background-image: url('foodservices.png');"></div>
+            <div class="hero-bg-slide" style="background-image: url('localfood.png');"></div>
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h2>Delivering Quality Catering, Hospitality & Facility Management Solutions</h2>
@@ -477,8 +491,8 @@
         </div>
     </div>
 
-    <!-- About Section with `truck_4.jpg` (saved as truck_4.jpg or truck_5.jpg) as Background -->
-    <section class="body-bg-section" id="about" style="background-image: url('truck.jpg');">
+    <!-- About Section with Background Image -->
+    <section class="body-bg-section" id="about">
         <div class="body-bg-overlay"></div>
         <div class="body-bg-content">
             <h2 class="section-heading" style="color: #ffffff;">About Georgias Catering Services Ltd</h2>
@@ -566,6 +580,20 @@
     </footer>
 
     <script>
+        // Hero Background Carousel Auto-advance Script
+        let heroSlideIndex = 0;
+        const heroSlides = document.querySelectorAll('.hero-bg-slide');
+
+        function runHeroCarousel() {
+            heroSlides[heroSlideIndex].classList.remove('active');
+            heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
+            heroSlides[heroSlideIndex].classList.add('active');
+        }
+
+        // Change background image every 5 seconds
+        setInterval(runHeroCarousel, 5000);
+
+
         // Gallery Carousel Script
         let slideIndex = 0;
         const track = document.getElementById('carouselTrack');
